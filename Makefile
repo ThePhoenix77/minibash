@@ -1,12 +1,17 @@
+# Compiler command and options
 CC = cc
 
+# Name of the executable program
 NAME = minishell
 
+# Paths for the Readline library
 READLINE_L = ~/.brew/opt/readline/lib
 READLINE_I = ~/.brew/opt/readline/include
 
+# Directory containing header files
 HEADER = includes
 
+# List of C source files for the project
 CFILES = builtins/builtins_utils.c builtins/builtins_utils2.c \
          builtins/builtins_utils3.c builtins/builtins_utils4.c \
          builtins/ft_cd.c builtins/ft_echo.c \
@@ -32,34 +37,45 @@ CFILES = builtins/builtins_utils.c builtins/builtins_utils2.c \
          Utils/linked_list_fun.c Utils/signals.c Utils/tty_handler.c \
          Utils/utils.c Utils/Utils_Tokeniz1.c Utils/Utils_Tokeniz2.c
 
+# Object files derived from source files
 OFILES = $(CFILES:%.c=%.o)
 
+# Directory for the libft library
 LIBFT_DIR = libft
-#
+
+# Library file for libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
+# Command for removing files
 RM = rm -rf
 
+# Compiler flags for warnings
 CC += -Wall -Werror -Wextra
 
+# Default target to build the program
 all: $(NAME)
 
-#
+# Target to build the libft library - makes sure it's built before linking
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+    make -C $(LIBFT_DIR)
 
+# Target to link object files and create the final executable
 $(NAME): $(OFILES) $(LIBFT)
-	$(CC) $(OFILES) -L $(LIBFT_DIR) -L $(READLINE_L) -lft -lreadline -o $(NAME)
+    $(CC) $(OFILES) -L $(LIBFT_DIR) -L $(READLINE_L) -lft -lreadline -o $(NAME)
 
+# Implicit rule for generating object files from C source files
 %.o: %.c $(HEADER)
-	$(CC) -I $(HEADER) -I $(READLINE_I) -c $< -o $@
+    $(CC) -I $(HEADER) -I $(READLINE_I) -c $< -o $@
 
+# Clean up object files and and the libft build
 clean:
-	make clean -C $(LIBFT_DIR)
-	$(RM) -rf $(OFILES)
+    make clean -C $(LIBFT_DIR) # Clean libft objects
+    $(RM) -rf $(OFILES) # Remove object files
 
+# Clean step including removing the final executable
 fclean: clean
-	make fclean -C $(LIBFT_DIR)
-	$(RM) -rf $(NAME)
+    make fclean -C $(LIBFT_DIR) # Clean libft fully
+    $(RM) -rf $(NAME) # Remove final executable
 
+# Rebuild everything from scratch
 re: fclean all
