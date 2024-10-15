@@ -14,7 +14,7 @@ void	save_tty(t_global *global)
 void	reset_tty(t_global *global)
 {
 	if (tcsetattr(STDIN_FILENO, TCSANOW, &global->t_termios) == -1) // Set terminal attributes
-	{
+	{ 
 		perror("minishell: tcsetattr"); // Print error if unsuccessful
 		malloc_failed(global); // Handle memory failure
 	}
