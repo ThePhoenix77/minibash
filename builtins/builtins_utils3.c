@@ -75,7 +75,7 @@ void	handle_key_value(t_global *global, char *content)
     }
     else // If there is no '='
     {
-        key = ft_strdup(content); // Simply duplicate the content as key
+        key = ft_strdup(content); // Simply duplicate the content as key 
         if (key)
             existing_var_case(global, key); // Handle the case for existing variables
     }
