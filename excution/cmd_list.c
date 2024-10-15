@@ -1,76 +1,68 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cmd_list.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eaboudi <eaboudi@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 09:37:44 by eaboudi           #+#    #+#             */
-/*   Updated: 2024/10/04 11:17:41 by eaboudi          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
+// Create a new command argument node
 t_cmd_args	*new_cmd_element(t_global *global, char *content)
 {
 	t_cmd_args	*new;
 
-	new = (t_cmd_args *)malloc(sizeof(t_cmd_args));
+	new = (t_cmd_args *)malloc(sizeof(t_cmd_args)); // Allocate memory for new command argument
 	if (!new)
-		malloc_failed(global);
-	new->next = NULL;
-	new->content = ft_strdup(content);
+		malloc_failed(global); // Handle memory allocation failure
+	new->next = NULL; // Initialize the next pointer to NULL
+	new->content = ft_strdup(content); // Duplicate the content string
 	if (!new->content)
 	{
-		free(new);
-		malloc_failed(global);
+		free(new); // Free allocated memory if strdup fails
+		malloc_failed(global); // Handle memory allocation failure
 	}
-	return (new);
+	return (new); // Return the newly created command argument
 }
 
+// Add a new command argument node to the end of the list
 void	add_back_element(t_cmd_args **head, t_cmd_args *new)
 {
 	t_cmd_args	*last;
 
-	if (!(*head) && !new)
+	if (!(*head) && !new) // If both head and new are NULL, do nothing
 		return ;
-	if (!(*head))
+	if (!(*head)) // If the list is empty, set the head to new
 		*head = new;
 	else
 	{
-		last = *head;
-		while (last->next)
+		last = *head; // Start from the head
+		while (last->next) // Traverse to the end of the list
 			last = last->next;
-		last->next = new;
+		last->next = new; // Link the new node at the end
 	}
 }
 
+// Store command arguments in the last execution node
 void	store_cmd_args(t_global *global, t_lst **node)
 {
 	t_cmd_args	*new;
 	t_exc_list	*last;
 
-	last = last_exc_node(global->root);
-	while (*node && (*node)->type == WORD)
+	last = last_exc_node(global->root); // Get the last execution node
+	while (*node && (*node)->type == WORD) // While there are nodes of type WORD
 	{
-		new = (t_cmd_args *)malloc(sizeof(t_cmd_args));
+		new = (t_cmd_args *)malloc(sizeof(t_cmd_args)); // Allocate memory for new command argument
 		if (!new)
-			malloc_failed(global);
-		new->next = NULL;
-		add_back_element(&last->cmd_args, new);
-		new->content = ft_strdup((*node)->content);
+			malloc_failed(global); // Handle memory allocation failure
+		new->next = NULL; // Initialize the next pointer to NULL
+		add_back_element(&last->cmd_args, new); // Add the new argument to the last execution node
+		new->content = ft_strdup((*node)->content); // Duplicate the content of the current node
 		if (!new->content)
-			malloc_failed(global);
-		*node = (*node)->next;
+			malloc_failed(global); // Handle memory allocation failure
+		*node = (*node)->next; // Move to the next node
 	}
 }
 
+// Add a command to the list of command arguments in an execution node
 void	add_list_cmd(t_global *global, t_exc_list *exc, t_lst **node)
 {
 	t_cmd_args	*new_cmd_node;
 
-	new_cmd_node = new_cmd_element(global, (*node)->content);
-	add_back_element(&exc->cmd_args, new_cmd_node);
-	(*node) = (*node)->next;
+	new_cmd_node = new_cmd_element(global, (*node)->content); // Create a new command argument
+	add_back_element(&exc->cmd_args, new_cmd_node); // Add it to the execution node's command arguments
+	(*node) = (*node)->next; // Move to the next node
 }
