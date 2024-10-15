@@ -27,7 +27,7 @@ int	unset_is_valid(char *str)
 			return (0);
 		i++;
 	}
-	return (1); // The identifier is valid
+	return (1); // The identifier is valid 
 }
 
 /**
