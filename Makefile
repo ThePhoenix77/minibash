@@ -57,25 +57,25 @@ all: $(NAME)
 
 # Target to build the libft library - makes sure it's built before linking
 $(LIBFT):
-    make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 
 # Target to link object files and create the final executable
 $(NAME): $(OFILES) $(LIBFT)
-    $(CC) $(OFILES) -L $(LIBFT_DIR) -L $(READLINE_L) -lft -lreadline -o $(NAME)
+	$(CC) $(OFILES) -L $(LIBFT_DIR) -L $(READLINE_L) -lft -lreadline -o $(NAME)
 
 # Implicit rule for generating object files from C source files
 %.o: %.c $(HEADER)
-    $(CC) -I $(HEADER) -I $(READLINE_I) -c $< -o $@
+	$(CC) -I $(HEADER) -I $(READLINE_I) -c $< -o $@
 
 # Clean up object files and and the libft build
 clean:
-    make clean -C $(LIBFT_DIR) # Clean libft objects
-    $(RM) -rf $(OFILES) # Remove object files
+	make clean -C $(LIBFT_DIR) # Clean libft objects
+	$(RM) -rf $(OFILES) # Remove object files
 
 # Clean step including removing the final executable
 fclean: clean
-    make fclean -C $(LIBFT_DIR) # Clean libft fully
-    $(RM) -rf $(NAME) # Remove final executable
+	make fclean -C $(LIBFT_DIR) # Clean libft fully
+	$(RM) -rf $(NAME) # Remove final executable
 
 # Rebuild everything from scratch
 re: fclean all
