@@ -1,5 +1,5 @@
 NAME		=	libft.a
-
+ 
 HEADER		=	libft.h
 
 CFILES		=	ft_bzero.c ft_isalpha.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isdigit.c \
