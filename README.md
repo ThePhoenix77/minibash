@@ -1,6 +1,6 @@
-# Minishell
+# Minibash
 
-Welcome to **Minishell**, a custom shell implementation designed to mimic the behavior of the Bash shell. This project serves as a practical exercise in understanding shell mechanics, process management, and command execution in Unix-like operating systems.
+Welcome to **Minibash**, a custom shell implementation designed to mimic the behavior of the Bash shell. This project serves as a practical exercise in understanding shell mechanics, process management, and command execution in Unix-like operating systems.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ Welcome to **Minishell**, a custom shell implementation designed to mimic the be
 
 ## Getting Started
 
-To get started with Minishell, clone the repository and compile the source code.
+To get started with Minibash, clone the repository and compile the source code.
 
 ### Installation
 
@@ -46,7 +46,7 @@ To get started with Minishell, clone the repository and compile the source code.
 
 ## Usage
 
-Once you launch Minishell, you will see a prompt where you can enter your commands. Simply type your command and press Enter.
+Once you launch Minibash, you will see a prompt where you can enter your commands. Simply type your command and press Enter.
 The shell will execute the command and display the output.
 
   *  Example Commands:
@@ -60,7 +60,7 @@ The shell will execute the command and display the output.
 
 ## Commands Implemented
 
-  Minishell supports a variety of built-in commands:
+  Minibash supports a variety of built-in commands:
    *  cd [path]: Change the current directory.
      
    *  echo [string]: Print the specified string to the standard output.
@@ -76,7 +76,7 @@ The shell will execute the command and display the output.
 
 ## Environment Variables
 
-  Minishell allows you to manage environment variables using the export and unset commands. You can check 
+  Minibash allows you to manage environment variables using the export and unset commands. You can check 
   the current environment variables using the env command.
 
   *  Example Usage:
@@ -88,7 +88,7 @@ The shell will execute the command and display the output.
 
 ## Error Handling
 
-  Minishell provides comprehensive error handling for various scenarios, including:
+  Minibash provides comprehensive error handling for various scenarios, including:
 
   *  Invalid commands
   
