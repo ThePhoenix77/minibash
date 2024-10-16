@@ -61,12 +61,18 @@ The shell will execute the command and display the output.
 ## Commands Implemented
 
   Minishell supports a variety of built-in commands:
-    *  cd [path]: Change the current directory.
-    *  echo [string]: Print the specified string to the standard output.
-    *  exit [status]: Exit the shell with the specified status.
-    *  env: Display the current environment variables.
-    *  export [variable=value]: Set or update environment variables.
-    *  unset [variable]: Remove environment variables.
+   *  cd [path]: Change the current directory.
+     
+   *  echo [string]: Print the specified string to the standard output.
+     
+   *  exit [status]: Exit the shell with the specified status.
+     
+   *  env: Display the current environment variables.
+     
+   *  export [variable=value]: Set or update environment variables.
+     
+   *  unset [variable]: Remove environment variables.
+     
 
 ## Environment Variables
 
