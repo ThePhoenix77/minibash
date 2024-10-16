@@ -290,6 +290,3 @@ bool			reset_sett(t_fd *fds); // Reset terminal settings
 int				close_pipe(int *pipe); // Close a pipe
 
 #endif
-``` 
-
-These comments aim to enhance clarity and provide guidance for future maintainability.
