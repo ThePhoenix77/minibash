@@ -6,6 +6,7 @@ Welcome to **Minibash**, a custom shell implementation designed to mimic the beh
 
 - [Features](#features)
 - [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Commands Implemented](#commands-implemented)
@@ -26,6 +27,24 @@ Welcome to **Minibash**, a custom shell implementation designed to mimic the beh
 ## Getting Started
 
 To get started with Minibash, clone the repository and compile the source code.
+
+## Prerequisites
+
+Before installing and running Minibash, ensure that you have the necessary dependencies installed.
+
+- **Readline Library**: Minibash depends on the Readline library for command-line input handling. You can install it using `brew`:
+
+    ```bash
+    brew install readline
+    ```
+
+- After installing `readline`, update the Makefile to point to the correct paths. Modify the following lines in the Makefile:
+
+    ```make
+    # Paths for the Readline library
+    READLINE_L = ~/.brew/opt/readline/lib
+    READLINE_I = ~/.brew/opt/readline/include
+    ```
 
 ### Installation
 
@@ -106,31 +125,3 @@ The shell will execute the command and display the output.
 ## License
 
   This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
